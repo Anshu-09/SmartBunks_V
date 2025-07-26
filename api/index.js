@@ -34,5 +34,9 @@ app.post("/calculate", upload.single("holidayFile"), calculateRoute);
 app.listen(port, () => {
   console.log(`SmartBunks server running on port ${port}`);
 });
-
 module.exports = app;
+
+const serverless = require("serverless-http");
+module.exports = serverless(app);
+
+

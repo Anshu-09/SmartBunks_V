@@ -1,65 +1,87 @@
+# 🧠 SmartBunks
 
-# 🧮 SmartBunks
-
-**SmartBunks** is a smart attendance calculator that helps students or faculty easily compute subject-wise attendance requirements based on class schedules, holidays, and custom thresholds.
+SmartBunks is a smart attendance analysis tool built with **Node.js**, **Express**, and **EJS**, designed to help students calculate how many classes they can safely bunk without falling below a specified attendance threshold.
 
 ---
 
 ## 🚀 Features
 
-- 📆 Input weekly subject-wise timetable
-- 🎯 Set attendance threshold percentage
-- 📁 Upload optional holiday Excel file or use the default list
-- 📊 Get detailed report with:
-  - Total working days
-  - Required minimum attendance
-  - Maximum number of classes you can bunk
+- 📅 Calculates attendance based on timetable and holidays
+- 📁 Upload holiday Excel file (optional)
+- 📊 Displays attendance status for each subject
+- 💡 Suggests how many lectures you can miss
+- 📦 Lightweight UI with Bootstrap and EJS templating
+- ☁️ Hosted on Vercel (serverless-friendly)
 
 ---
 
-## 📂 Folder Structure
+## 📁 Folder Structure
 
 ```
 SmartBunks_V/
-│
-├── api/                      # Express backend
-│   ├── views/                # EJS templates
-│   │   └── index.ejs
-│   ├── public/               # Static files
-│   │   └── styles.css
-│   ├── static/               # Default holiday list
-│   │   └── data/
-│   │       └── holidays.xlsx
-│   ├── app.js                # Main backend logic
-│   └── ...
-├── package.json
+├── api/                 # Express app and backend logic (serverless on Vercel)
+│   ├── index.js
+│   └── calculate.js
+├── public/              # Static files (CSS)
+│   └── style.css
+├── static/data/         # Optional: default holiday Excel
+│   └── holidays.xlsx
+├── views/               # EJS frontend templates
+│   └── index.ejs
+├── package.json         # Project dependencies and scripts
+├── vercel.json          # Vercel deployment config
 └── README.md
 ```
 
 ---
 
-## 📌 Requirements
+## 🛠️ Tech Stack
 
-- Node.js (v18 or later)
-- npm
+- Node.js
+- Express
+- EJS
+- Multer (file upload)
+- XLSX (Excel parsing)
+- Bootstrap (styling)
+- Vercel (deployment)
 
 ---
 
-## 🛠️ Installation
+## 🌐 Live Demo
 
+Deployed on Vercel: [https://smartbunks.vercel.app](https://smartbunks.vercel.app) <!-- replace with actual URL -->
+
+---
+
+## 📦 Setup & Run Locally
+
+1. Clone the repository:
 ```bash
-# Clone the repo
-git clone https://github.com/Anshu-09/SmartBunks_V.git
-cd SmartBunks_V/api
-
-# Install dependencies
-npm install
-
-# Run the server
-node app.js
+git clone https://github.com/your-username/SmartBunks_V.git
+cd SmartBunks_V
 ```
 
-Then open [http://localhost:3000](http://localhost:3000) in your browser.
+2. Install dependencies:
+```bash
+npm install
+```
+
+3. Run locally:
+```bash
+node api/index.js
+```
+
+4. Visit `http://localhost:3000` in your browser.
+
+---
+
+## 📤 Deployment on Vercel
+
+This project is ready to deploy on Vercel:
+
+- `api/index.js` serves as the main serverless function
+- `vercel.json` maps all routes to this function
+- Static files and templates are organized accordingly
 
 ---
 
@@ -77,6 +99,12 @@ You can view/download the default holiday list directly from the form interface 
 4. Click **Analyze** to get your smart attendance plan.
 
 ---
+
+## 🧑‍💻 Author
+
+**Anshuman Giri**  
+💼 [LinkedIn](www.linkedin.com/in/anshuman-giri)  
+📧 anshumangiriofficial@gmail.com
 
 ## 🧾 License
 
