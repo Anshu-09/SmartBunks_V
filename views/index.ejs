@@ -5,12 +5,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>SmartBunks</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="/style.css">
+
 </head>
 <body class="bg-light">
   <div class="container my-5">
     <h1 class="mb-4">SmartBunks Attendance Analyzer</h1>
     <form action="/calculate" method="POST" enctype="multipart/form-data">
-      <div class="mb-3">
+  <div class="d-flex flex-column flex-md-row gap-4">
+    <!-- Left card: Basic info -->
+<div class="card flex-fill p-4 shadow-lg basic-info-card d-flex flex-column justify-content-between">      <div class="mb-3">
+        <h6>Basic Info</h6><br>
         <label class="form-label">Start Date</label>
         <input type="date" class="form-control" name="start_date" required />
       </div>
@@ -22,36 +27,49 @@
         <label class="form-label">Threshold %</label>
         <input type="number" class="form-control" name="threshold" value="75" required />
       </div>
-     <div class="mb-3">
-  <label for="holidayFile" class="form-label"><strong>Upload Holiday Excel File (optional):</strong></label>
-  <input type="file" class="form-control" id="holidayFile" name="holiday" accept=".xlsx">
-  <small class="form-text text-muted">
-    Or <a href="/static/data/holidays.xlsx" download>download the default holiday list</a>
-  </small>
-</div>
-
       <div class="mb-3">
+        <label for="holidayFile" class="form-label"><strong>Upload Holiday Excel File (optional):</strong></label>
+        <input type="file" class="form-control" id="holidayFile" name="holiday" accept=".xlsx">
+        <small class="form-text text-muted">
+          Or <a href="/static/data/holidays.xlsx" download>download the default holiday list</a>
+        </small>
+      </div>
+        <button type="submit" class="btn btn-primary mt-4">Analyze</button>
+
+    </div>
+
+    <!-- Right card: Subject timetable -->
+    <div class="card flex-fill p-4 shadow-lg">
+      <div class="mb-3">
+        <h6>Schedule</h6><br>
         <label class="form-label">Monday</label>
-        <textarea class="form-control" name="mon">Math,Physics</textarea>
+        <textarea class="form-control" name="mon" placeholder="eg. Math,Physics,DSA"></textarea>
       </div>
       <div class="mb-3">
         <label class="form-label">Tuesday</label>
-        <textarea class="form-control" name="tue">Chemistry,Biology</textarea>
+        <textarea class="form-control" name="tue" placeholder="eg. Math,Physics,Biology"></textarea>
       </div>
       <div class="mb-3">
         <label class="form-label">Wednesday</label>
-        <textarea class="form-control" name="wed">Math,English</textarea>
+        <textarea class="form-control" name="wed" placeholder="eg. Math,Physics,Computer"></textarea>
       </div>
       <div class="mb-3">
         <label class="form-label">Thursday</label>
-        <textarea class="form-control" name="thu">Physics,Chemistry</textarea>
+        <textarea class="form-control" name="thu" placeholder="eg. Math,Physics,English"></textarea>
       </div>
       <div class="mb-3">
         <label class="form-label">Friday</label>
-        <textarea class="form-control" name="fri">Biology,English</textarea>
+        <textarea class="form-control" name="fri" placeholder="eg. Math,Physics,DBMS"></textarea>
       </div>
-      <button type="submit" class="btn btn-primary">Analyze</button>
-    </form>
+      <div class="mb-3">
+        <label class="form-label">Saturday</label>
+        <textarea class="form-control" name="sat" placeholder="eg. Math,Physics,OS"></textarea>
+      </div>
+    </div>
+  </div>
+
+</form>
+
 
     <% if (result) { %>
       <hr />
@@ -79,5 +97,9 @@
       </table>
     <% } %>
   </div>
+  <footer class="footer mt-5 py-3 bg-light text-center text-muted">
+  SmartBunks by Anshuman
+</footer>
+
 </body>
 </html>

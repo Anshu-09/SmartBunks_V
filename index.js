@@ -12,6 +12,7 @@ app.set("views", path.join(__dirname, "views"));
 
 // Static files
 app.use("/static", express.static(path.join(__dirname, "static")));
+app.use(express.static('public'));
 
 
 // Body parser

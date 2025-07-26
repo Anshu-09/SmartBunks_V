@@ -1,0 +1,149 @@
+/* Container max width */
+.container {
+  max-width: 900px;
+}
+
+/* Header styling with stronger lift */
+h1 {
+  text-align: center;
+  color: #1c1c1c; /* Dark color */
+  font-weight: 700;
+  font-size: 2.8rem;
+  margin-bottom: 2rem;
+  /* Stronger shadow for more lift */
+  text-shadow: 2px 2px 6px rgba(0,0,0,0.25);
+}
+h6{
+    text-align: center;
+    font-weight: 700;
+    text-shadow: 2px 2px 6px rgba(0,0,0,0.25);
+}
+
+/* Make all form labels slightly bold */
+label.form-label {
+  font-weight: 600;
+}
+
+/* Specifically reduce boldness of holiday label */
+label[for="holidayFile"] {
+  font-weight: 500;
+  color: #555; /* Slightly softer color */
+}
+
+/* Flex container for cards */
+.d-flex.flex-column.flex-md-row {
+  gap: 2rem;
+  justify-content: center;
+}
+.basic-info-card {
+  min-height: auto; /* or remove min-height */
+  max-height: none; /* no max height */
+}
+
+.basic-info-card label.form-label,
+.basic-info-card h6 {
+  margin-bottom: 0.25rem;  /* less space below labels and headings */
+  font-size: 0.9rem;       /* smaller font if you want */
+}
+
+.basic-info-card input.form-control,
+.basic-info-card input[type="date"],
+.basic-info-card input[type="number"],
+.basic-info-card input[type="file"],
+.basic-info-card textarea.form-control {
+  padding: 0.3rem 0.5rem;  /* less padding inside inputs */
+  font-size: 0.9rem;
+  height: auto;            /* avoid fixed height */
+  margin-bottom: 0.6rem;   /* less space between inputs */
+}
+
+.basic-info-card button.btn {
+  padding: 0.4rem 2rem;
+  font-size: 1rem;
+  margin-top: 1rem;
+}
+
+
+/* Cards with stronger lift */
+.card {
+  flex: 1 1 45%;
+  min-width: 300px;
+  border-radius: 12px;
+  background-color: #fff;
+  padding: 2rem;
+  transition: box-shadow 0.3s ease;
+  /* Stronger shadow */
+  box-shadow: 0 12px 35px rgba(0,0,0,0.18);
+}
+
+.card:hover {
+  /* Even stronger on hover */
+  box-shadow: 0 18px 45px rgba(0,0,0,0.25);
+}
+
+/* Analyze button */
+/* button.btn-primary {
+  display: block;
+  margin: 2rem auto 0 auto;
+  padding: 0.8rem 3rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  border-radius: 8px;
+  cursor: pointer;
+} */
+
+/* Footer */
+footer.footer {
+  text-align: center;
+  padding: 1rem 0;
+  font-size: 0.9rem;
+  color: #555;
+  background-color: #f8f9fa;
+  border-top: 1px solid #ddd;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  box-shadow: inset 0 1px 3px rgba(0,0,0,0.05);
+}
+
+/* Responsive adjustments */
+@media (max-width: 767.98px) {
+  .d-flex.flex-column.flex-md-row {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .card {
+    flex: 1 1 100%;
+    min-width: auto;
+  }
+
+ /* Further reduce the textarea height */
+/* Make subject input textareas shorter vertically */
+textarea.form-control {
+  min-height: 30px;   /* reduce vertical height */
+  max-height: 70px;
+  padding: 0.3rem 0.75rem;
+  font-size: 1rem;
+  resize: vertical;
+}
+
+/* Increase Analyze button width and decrease height */
+button.btn-primary {
+  padding: 0.4rem 5rem;  /* less vertical padding, more horizontal */
+  font-size: 1.1rem;
+  font-weight: 600;
+  border-radius: 8px;
+  cursor: pointer;
+  display: block;
+  margin: 2rem auto 0 auto;
+  transition: background-color 0.3s ease;
+}
+
+/* Optional: On hover, keep the same styling or add slight effect */
+button.btn-primary:hover {
+  background-color: #0b5ed7; /* Bootstrap primary hover */
+}
+@media (max-width: 767.98px) {
+  .card {
+    min-height: 300px; /* smaller min height on small screens */
+  }
+}
