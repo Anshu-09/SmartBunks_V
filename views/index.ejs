@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>SmartBunks</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="bg-light">
+  <div class="container my-5">
+    <h1 class="mb-4">SmartBunks Attendance Analyzer</h1>
+    <form action="/calculate" method="POST" enctype="multipart/form-data">
+      <div class="mb-3">
+        <label class="form-label">Start Date</label>
+        <input type="date" class="form-control" name="start_date" required />
+      </div>
+      <div class="mb-3">
+        <label class="form-label">End Date</label>
+        <input type="date" class="form-control" name="end_date" required />
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Threshold %</label>
+        <input type="number" class="form-control" name="threshold" value="75" required />
+      </div>
+     <div class="mb-3">
+  <label for="holidayFile" class="form-label"><strong>Upload Holiday Excel File (optional):</strong></label>
+  <input type="file" class="form-control" id="holidayFile" name="holiday" accept=".xlsx">
+  <small class="form-text text-muted">
+    Or <a href="/static/data/holidays.xlsx" download>download the default holiday list</a>
+  </small>
+</div>
+
+      <div class="mb-3">
+        <label class="form-label">Monday</label>
+        <textarea class="form-control" name="mon">Math,Physics</textarea>
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Tuesday</label>
+        <textarea class="form-control" name="tue">Chemistry,Biology</textarea>
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Wednesday</label>
+        <textarea class="form-control" name="wed">Math,English</textarea>
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Thursday</label>
+        <textarea class="form-control" name="thu">Physics,Chemistry</textarea>
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Friday</label>
+        <textarea class="form-control" name="fri">Biology,English</textarea>
+      </div>
+      <button type="submit" class="btn btn-primary">Analyze</button>
+    </form>
+
+    <% if (result) { %>
+      <hr />
+      <h3>Attendance Summary</h3>
+      <table class="table table-bordered mt-3">
+        <thead>
+  <tr>
+    <th>Subject</th>
+    <th>Total Classes</th>
+    <th>Min Required</th>
+    <th>Max Absents</th>
+  </tr>
+</thead>
+<tbody>
+  <% for (const sub in result) { %>
+    <tr>
+      <td><%= sub %></td>
+      <td><%= result[sub].total %></td>
+      <td><%= result[sub].min_required %></td>
+      <td><%= result[sub].max_absents %></td>
+    </tr>
+  <% } %>
+</tbody>
+
+      </table>
+    <% } %>
+  </div>
+</body>
+</html>
