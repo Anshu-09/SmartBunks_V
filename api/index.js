@@ -1,22 +1,21 @@
 const express = require("express");
-const multer = require("multer");
+const app = express();
 const path = require("path");
+const multer = require("multer");
 const bodyParser = require("body-parser");
 
-const app = express();
-const port = 3000;
+// Middleware
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
+app.use(express.static(path.join(__dirname, "../public")));
+app.use("/static", express.static(path.join(__dirname, "../static")));
 
 // View engine
 app.set("view engine", "ejs");
-app.set("views", path.join(__dirname, "views"));
-
-// Static files
-app.use("/static", express.static(path.join(__dirname, "static")));
-app.use(express.static('public'));
+app.set("views", path.join(__dirname, "../views"));
 
 
-// Body parser
-app.use(bodyParser.urlencoded({ extended: true }));
+const port = 3000;
 
 // File upload setup
 const storage = multer.diskStorage({
@@ -29,9 +28,11 @@ const upload = multer({ storage });
 app.get("/", (req, res) => res.render("index", { result: null }));
 
 // Handle POST to /calculate
-const calculateRoute = require("./api/calculate");
+const calculateRoute = require("../api/calculate");
 app.post("/calculate", upload.single("holidayFile"), calculateRoute);
 
 app.listen(port, () => {
   console.log(`SmartBunks server running on port ${port}`);
 });
+
+module.exports = app;
