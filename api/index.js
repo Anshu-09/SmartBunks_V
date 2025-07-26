@@ -27,8 +27,5 @@ app.get("/", (req, res) => res.render("index", { result: null }));
 const calculateRoute = require("../api/calculate");
 app.post("/calculate", upload.single("holidayFile"), calculateRoute);
 
-module.exports = app;
-
+// ✅ Correct export
 module.exports = serverless(app);
-
-
